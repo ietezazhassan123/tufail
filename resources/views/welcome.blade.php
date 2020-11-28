@@ -14,8 +14,16 @@
                <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous"></script>
                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+               <style type="text/css">
+                    body {
+                        background: url('http://localhost/shopping/public/ecom_template/white_leather.png');
+                        repeat 0 0;
+                    }
+               </style>
+
+               
       </head>
-<body>
+<body class="well ">
 <!-- 
     Upper Header Section 
 -->
@@ -77,27 +85,39 @@ Navigation Bar Section
             <span class="icon-bar"></span>
           </a>
           <div class="nav-collapse">
-            <form action="#" class="navbar-search pull-left">
-              <input type="text" placeholder="Search" class="search-query span10">
+            <form action="{{ route('search_products_based_on_filter') }}" method="post" class="navbar-search pull-left">
+                  @csrf
+                  <input type="text" name="search_keyword" placeholder="Search" class="search-query span10">
             </form>
+
             <ul class="nav pull-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
                 <div class="dropdown-menu">
-                <form class="form-horizontal loginFrm">
-                  <div class="control-group">
-                    <input type="text" class="span2" id="inputEmail" placeholder="Email">
-                  </div>
-                  <div class="control-group">
-                    <input type="password" class="span2" id="inputPassword" placeholder="Password">
-                  </div>
-                  <div class="control-group">
-                    <label class="checkbox">
-                    <input type="checkbox"> Remember me
-                    </label>
-                    <button type="submit" class="shopBtn btn-block">Sign in</button>
-                  </div>
-                </form>
+                <form action="{{ route('login') }}" method="post" class="form-horizontal loginFrm">
+                    @csrf
+                    <div class="control-group">
+                          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                          
+                          @error('email')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                    </div>
+                    <div class="control-group">
+                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                          
+                           @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                           @enderror
+                    </div>
+                    <div class="control-group">
+                      <button type="submit" class="shopBtn btn-block">Sign in</button>
+                    </div>
+                 </form>
                 </div>
             </li>
             </ul>
@@ -113,7 +133,13 @@ Body Section
 <div class="well well-small">
     <ul class="nav nav-list">
         @foreach($Categories as $Category)
-        <li><a href=""><span class="icon-chevron-right"></span>{{ $Category->name }}</a></li>
+          <li><a href="" class="maincategory" data-open="not"  id="category_list_{{ $Category->id }}" data-id="{{ $Category->id }}"><span class="icon-chevron-right"></span>{{ $Category->name }}</a></li>
+
+          <ul class="nav nav-list"  id="sub_category_list_{{ $Category->id }}" style="margin-left: 45px;display: none;">
+                @foreach($Category->sub_category as $SubCategory)
+                     <li><a href="{{ route('search_based_on_subcategory',['id'=>$SubCategory->id]) }}"><span class="icon-chevron-right"></span>{{ $SubCategory->name }}</a></li>
+                @endforeach
+          </ul>
         @endforeach
         <li style="border:0"> &nbsp;</li>
     </ul>
@@ -266,6 +292,25 @@ accompanied by English versions from the 1914 translation by H. Rackham.
           <script src="{{ asset('/public/ecom_template/js/shop.js') }}"></script>
           <script type="text/javascript">
            $(document).ready(function(){
+
+                         $('.maincategory').on('click',function(e){
+                                e.preventDefault();
+                                let id = $(this).data('id');
+                                let main_category_id = $(this).attr('id');
+                                let open = $(this).data('open');
+
+                                if(open == 'not')
+                                {
+                                     $('#sub_category_list_'+id).css('display','block');
+                                     $('#'+main_category_id).data('open','yes');
+                                }else{
+                                     $('#sub_category_list_'+id).css('display','none');
+                                     $('#'+main_category_id).data('open','not');
+                                }
+                               
+                         });
+
+
                          $('body').on('click','.add_to_cart',function(){
                                                let product_id = $(this).data('pid');
                                                axios.get('Add_to_cart/'+product_id+'/'+1)

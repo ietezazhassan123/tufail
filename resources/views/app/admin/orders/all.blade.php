@@ -1,4 +1,4 @@
-@extends('app.admin.index')
+@extends('app.admin.index2')
 
 
 @section('mainsection')
@@ -32,7 +32,7 @@
                                        <td>{{ $UserOrder->email }}</td>
                                        <td>{{ $UserOrder->city }}</td>
                                        <td>{{ $UserOrder->address }}</td>
-                                   	   <td>{{ $UserOrder->status }}</td>
+                                   	   <td><span class="badge badge-warning">{{ strtoupper($UserOrder->status) }}</span></td>
                                    	   <td>
                                                    <table>
                                                         <thead>

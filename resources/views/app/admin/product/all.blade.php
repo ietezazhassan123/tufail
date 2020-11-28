@@ -1,4 +1,4 @@
-@extends('app.admin.index')
+@extends('app.admin.index2')
 
 @section('mainsection')
   

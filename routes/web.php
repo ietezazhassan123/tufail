@@ -74,3 +74,14 @@ Route::get('receive_order/{id}','UserOrderController@receive_order')->name('rece
 Route::get('AllOrders','OrderAdmin@AllOrders')->name('AllOrders');
 Route::get('deliver_order/{id}','OrderAdmin@deliver_order')->name('deliver_order');
 Route::get('AllDeliveredOrder','OrderAdmin@AllDeliveredOrder')->name('AllDeliveredOrder');
+
+
+
+Route::get('search_based_on_subcategory/{id}','SearchController@search_based_on_subcategory')->name('search_based_on_subcategory');
+Route::post('search_products_based_on_filter','SearchController@search_products_based_on_filter')->name('search_products_based_on_filter');
+Route::post('search_products_based_on_filter_for_login_user','SearchController@search_products_based_on_filter_for_login_user')->name('search_products_based_on_filter_for_login_user');
+
+
+
+Route::get('UpdateProfile','Profile@UpdateProfile')->name('UpdateProfile');
+Route::post('update_user_profile','Profile@update_user_profile')->name('update_user_profile');

@@ -1,4 +1,4 @@
-@extends('app.user.index')
+@extends('app.user.index2')
 
 @section('mainsection')
   
@@ -51,7 +51,9 @@
                                    	   <td>
                                    	   	   @if($UserOrder->status == 'deliver')
                                    	   	      <button class="btn btn-md btn-success Receive_order" data-oid="{{ $UserOrder->id }}">Receive</button>
-                                   	       @endif
+                                   	       @else
+                                               <span class="badge badge-warning">Received</span>
+                                           @endif
                                    	   </td>
                                    </tr>
 	              	   	     @endforeach

@@ -1,4 +1,4 @@
-@extends('app.user.index')
+@extends('app.user.index2')
 
 @section('mainsection')
   

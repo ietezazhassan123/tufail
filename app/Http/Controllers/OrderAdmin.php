@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\UserOrder;
+use App\Mail\OrderShipped;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 
 
@@ -28,6 +32,8 @@ class OrderAdmin extends Controller
            	      $UserOrder = UserOrder::findOrFail($id);
            	      $UserOrder->status = "deliver";
            	      $UserOrder->save();
+
+                  Mail::to($UserOrder->get_order_user)->send(new OrderShipped($UserOrder));
 
            	      return ['success'=>'Order Successfully Delivered'];
            }

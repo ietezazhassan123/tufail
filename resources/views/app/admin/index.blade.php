@@ -46,7 +46,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+              @if(Auth::user()->image != null)
+                   <img src="http://localhost/shopping/public/Images/profiles/{{ Auth::user()->image }}" width="50px" class="img-circle elevation-2" alt="User Image">
+              @else
+                   <img src="http://localhost/shopping/public/Images/no_dp.png"  width="50px" class="img-circle elevation-2" alt="User Image">
+              @endif
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -129,6 +133,16 @@
                 </a>
               </li>
 
+
+              <li class="nav-item">
+                  <a href="{{ route('UpdateProfile') }}" class="nav-link">
+                    &nbsp;&nbsp;<i class="fas fa-id-badge"></i>&nbsp;&nbsp;
+                    <p>Update Profile</p>
+                  </a>
+              </li>
+
+
+
               <li class="nav-item">
                 <a href="{{ route('AllDeliveredOrder') }}" class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                   &nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;
@@ -148,13 +162,148 @@
     </div>
   </aside>
 
+
+
   <div class="content-wrapper">
-        	   @yield('mainsection')
+
+
+<section class="content pt-5">
+
+      @if($message = Session::get('success'))
+                <div class="row offset-md-2">
+            <div class="col-md-8 alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+                    <strong>{{ $message }}</strong>
+            </div>
+          </div>
+      @endif 
+
+      
+      <div class="container-fluid">
+        <div class="row">
+      
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ App\Category::count() }}</h3>
+                <p>Main Categories</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="{{ route('Category.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ App\SubCategory::count() }}</h3>
+                <p>Sub Categories</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('SubCategory.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ App\Product::count() }}</h3>
+
+                <p>Products</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('Product.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ App\UserOrder::where('status','pending')->count() }}</h3>
+
+                <p>Pending Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('AllOrders') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ App\UserOrder::where('status','!=','pending')->count() }}</h3>
+
+                <p>Shipped Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('AllDeliveredOrder') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ App\UserOrder::where('status','Received')->count() }}</h3>
+
+                <p>Received Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('AllDeliveredOrder') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ App\User::where('role','User')->count() }}</h3>
+
+                <p>Total Users</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <p  class="small-box-footer"> -- </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </div>
+
+
+
 
   
 
-  <!-- Main Footer -->
   <footer class="main-footer">
             
   </footer>

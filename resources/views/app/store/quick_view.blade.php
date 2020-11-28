@@ -15,6 +15,13 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+                <style type="text/css">
+                    body {
+                        background: url('http://localhost/shopping/public/ecom_template/white_leather.png');
+                        repeat 0 0;
+                    }
+                </style>
+
   </head>
 <body>
 

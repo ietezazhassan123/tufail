@@ -14,8 +14,15 @@
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+                <style type="text/css">
+                    body {
+                        background: url('http://localhost/shopping/public/ecom_template/white_leather.png');
+                        repeat 0 0;
+                    }
+                </style>
   </head>
-<body>
+<body class="well">
 
 
 
@@ -45,10 +52,10 @@
 </div>
 </header>
 
-<!--
-Navigation Bar Section 
--->
+
 <div class="navbar">
+
+	<!--
 	  <div class="navbar-inner">
 		<div class="container">
 		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
@@ -85,15 +92,21 @@ Navigation Bar Section
 		  </div>
 		</div>
 	  </div>
-	</div>
-<!-- 
-Body Section 
--->
+	-->
+
+	<button class="btn btn-sm btn-info pull-left" onclick="window.history.back();">Back</button>
+	<a class="btn btn-sm btn-success pull-right" href="{{ route('CheckOut') }}">Next</a>
+
+
+
+</div>
+
 	<div class="row">
 	<div class="span12">
     <ul class="breadcrumb">
 		<li><a href="{{ route('UserPanel') }}">Home</a> <span class="divider">/</span></li>
-		<li class="active">Check Out</li>
+		<li class="active">Cart</li> <span class="divider">/</span></li>
+		<li><a href="{{ route('CheckOut') }}">Check Out</a> <span class="divider">/</span></li>
     </ul>
 	<div class="well well-small">
 		

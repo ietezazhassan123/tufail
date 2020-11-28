@@ -11,6 +11,10 @@ use App\Product;
 use App\OrderProduct;
 
 
+use App\Mail\OrderPlaced;
+use Illuminate\Support\Facades\Mail;
+
+
 class UserOrderController extends Controller
 {
                         
@@ -112,6 +116,9 @@ class UserOrderController extends Controller
                                        $OrderProduct->save();
 
                                 }
+                                
+                                Mail::to(Auth::user())->send(new OrderPlaced($UserOrder));
+
 
                                 $request->session()->forget('cart');
                                 return ['success'=>'Order Placed Successfully'];
