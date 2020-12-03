@@ -99,7 +99,7 @@
 
           <li class="nav-item">
               <a href="{{ route('UpdateProfile') }}" class="nav-link">
-                &nbsp;&nbsp;<i class="fas fa-id-badge"></i>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;<i class="fas fa-id-badge"></i>&nbsp;&nbsp;
                 <p>Update Profile</p>
               </a>
           </li>

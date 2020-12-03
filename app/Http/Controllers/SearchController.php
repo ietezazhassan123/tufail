@@ -16,7 +16,7 @@ class SearchController extends Controller
                 {
                 	   $Categories = Category::all();
                        $Products = Product::where('sub_category_id',$id)->get();
-                       $ProductsSide = Product::inRandomOrder()->limit(3)->get();
+                       $ProductsSide = Product::where('sub_category_id',$id)->inRandomOrder()->limit(3)->get();
 		               return view('welcome',['Categories'=>$Categories , 'Products'=>$Products , 'ProductsSide'=>$ProductsSide]);
                 }
 

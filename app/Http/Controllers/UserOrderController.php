@@ -150,4 +150,25 @@ class UserOrderController extends Controller
 
                               return ['success'=>'Order Successfully Received'];
                         }
+
+
+
+                        public function delete_order($id)
+                        {
+                              $UserOrder = UserOrder::findOrFail($id);
+                              $UserOrder->forceDelete();
+                              return ['success'=>'Order Successfully Deleted'];
+                        }
+
+
+                        public function delete_received_orders()
+                        {
+                              $UserOrder = UserOrder::where('status','Received')->get();
+                              //$UserOrder->forceDelete();
+                              foreach ($UserOrder as $key => $value) 
+                              {
+                                  $value->forceDelete();
+                              }
+                              return ['success'=>'Received Orders Successfully Deleted'];
+                        }
 }

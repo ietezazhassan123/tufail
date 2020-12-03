@@ -24,7 +24,12 @@ class Profile extends Controller
 
                     public function UpdateProfile()
                     {
-                    	    return view('auth.profile');
+                            if(Auth::user()->role == 'Admin')
+                            {
+                                     return view('app.admin.profile');
+                            }else{
+                                     return view('app.user.profile');
+                            }
                     }
 
 

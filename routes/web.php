@@ -95,3 +95,8 @@ Route::get('Aboutus',function(){
 Route::get('Contactus',function(){
 	  return view('app.contactus');
 })->name('Contactus');
+
+
+
+Route::get('delete_order/{id}','UserOrderController@delete_order');
+Route::get('delete_received_orders','UserOrderController@delete_received_orders');

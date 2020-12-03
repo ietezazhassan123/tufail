@@ -104,7 +104,7 @@
 	<div class="row">
 	<div class="span12">
     <ul class="breadcrumb">
-		<li><a href="{{ route('UserPanel') }}">Home</a> <span class="divider">/</span></li>
+		<li><a href="{{ route('mainpage') }}">Home</a> <span class="divider">/</span></li>
 		<li class="active">Cart</li> <span class="divider">/</span></li>
 		<li><a href="{{ route('CheckOut') }}">Check Out</a> <span class="divider">/</span></li>
     </ul>

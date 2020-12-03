@@ -2,7 +2,10 @@
 
 @section('mainsection')
   
-    <h3 class="pt-4 ml-5">All Delivered Orders</h3>
+    <h3 class="pt-4 ml-5">All Delivered Orders</h3> <br />
+
+        <button class="btn btn-md btn-danger ml-5 delete_all_received_orders">Delete All Delivered Order</button>
+
     
     <div class="card m-5" >
               
@@ -18,6 +21,7 @@
 	              	   	  	  <th><strong><u>Status</u></strong></th>
 	              	   	  	  <th><strong><u>Products</u></strong></th>
 	              	   	  	  <th><strong><u>Total Price</u></strong></th>
+                            <th><strong><u>Action</u></strong></th>
 	              	   	  </tr>
 	              	   </thead>
 
@@ -51,9 +55,14 @@
                                                             @endforeach
                                                         </tbody>
                                                         
-                                                   </table>
+                                                   </table> 
                                        </td>
                                    	   <td>{{ $UserOrder->totalPrice }}</td>
+                                       <td>
+                                             @if($UserOrder->status == "Received")
+                                                      <button class="btn btn-md btn-danger delete_deliver_order" data-id="{{ $UserOrder->id }}">Delete</button>
+                                             @endif
+                                       </td>
                                    </tr>
 	              	   	     @endforeach
 	              	   </tbody>
@@ -95,6 +104,70 @@
                           }
                     })
           });
+
+
+
+
+
+                $('.delete_deliver_order').on('click',function(){
+                      let id =  $(this).data('id');
+                      
+                      Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                      }).then((result) => {
+                            if (result.isConfirmed) {
+                                  axios.get('delete_order/'+id)
+                                  .then((response)=>{
+                                       if(response.data.success)
+                                       {
+                                            Swal.fire(
+                                              'Deleted!',
+                                              'This Order Successfully Delete.',
+                                              'success'
+                                            );
+                                            location.reload();
+                                       }
+                                  });
+                            }
+                      });
+               });
+
+
+
+
+
+               $('.delete_all_received_orders').on('click',function(){
+                      Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You Are Sure to Delete All Delivered Order!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                      }).then((result) => {
+                            if (result.isConfirmed) {
+                                  axios.get('delete_received_orders')
+                                  .then((response)=>{
+                                       if(response.data.success)
+                                       {
+                                            Swal.fire(
+                                              'Deleted!',
+                                              'All Received Order Deleted Successfully.',
+                                              'success'
+                                            );
+                                            location.reload();
+                                       }
+                                  });
+                            }
+                      });
+               });
     })
 </script>
 @endsection
