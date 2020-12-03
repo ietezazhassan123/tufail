@@ -12,8 +12,8 @@ use App\OrderProduct;
 
 
 class UserDealingProduct extends Controller
-{ 
-           
+{
+
 
 
            public function ShowAllProducts()
@@ -39,12 +39,12 @@ class UserDealingProduct extends Controller
            	        }else{
            	        	    $product = Product::findOrFail($id);
            	        	    $cart[$id] = [
-				                 'name' => $product->name,
-				                 'qty' => $qty,
-				                 'description' => $product->description,
-				                 'price' => $product->price,
-				                 'image' => $product->product_images->first()->image_path
-				             ];
+      				                 'name' => $product->name,
+      				                 'qty' => $qty,
+      				                 'description' => $product->description,
+      				                 'price' => $product->price,
+      				                 'image' => $product->product_images->first()->image_path
+      				             ];
            	        }
 
            	        $request->session()->put('cart',$cart);
@@ -109,9 +109,9 @@ class UserDealingProduct extends Controller
 
 
 
-          
 
 
 
-          
+
+
 }

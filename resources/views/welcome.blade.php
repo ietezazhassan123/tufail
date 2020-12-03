@@ -21,11 +21,11 @@
                     }
                </style>
 
-               
+
       </head>
 <body class="well ">
-<!-- 
-    Upper Header Section 
+<!--
+    Upper Header Section
 -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="topNav">
@@ -37,17 +37,19 @@
                     <a href=""><span class="icon-youtube"></span></a>
                     <a href=""><span class="icon-tumblr"></span></a>
                 </div>
-                <a class="active" href=""> <span class="icon-home"></span> Home</a> 
-                <a href="{{ route('login') }}"><span class="icon-user"></span> Login</a> 
-                <a href="{{ route('register') }}"><span class="icon-edit"></span> Register </a> 
-                <a href=""><span class="icon-envelope"></span> Contact us</a>
+                <a class="active" href=""> <span class="icon-home"></span> Home</a>
+                <a href="{{ route('login') }}"><span class="icon-user"></span> Login</a>
+                <a href="{{ route('register') }}"><span class="icon-edit"></span> Register </a>
+                <a href="{{ route('Aboutus') }}"><span class="icon-list"></span>  About Us</a>
+                <a href="{{ route('Contactus') }}"><span class="icon-envelope"></span> Contact us</a>
+
             </div>
         </div>
     </div>
 </div>
 
 <!--
-Lower Header Section 
+Lower Header Section
 -->
 <div class="container">
 <div id="gototop"> </div>
@@ -57,13 +59,13 @@ Lower Header Section
     <h1>
     <span>
          Khushal Shopping Mall
-    </span> 
+    </span>
     </a>
     </h1>
     </div>
     <div class="span4">
     <div class="offerNoteWrapper">
-  
+
     </div>
     </div>
     <div class="span4 alignR">
@@ -74,7 +76,7 @@ Lower Header Section
 </header>
 
 <!--
-Navigation Bar Section 
+Navigation Bar Section
 -->
 <div class="navbar">
       <div class="navbar-inner">
@@ -98,7 +100,7 @@ Navigation Bar Section
                     @csrf
                     <div class="control-group">
                           <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                          
+
                           @error('email')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -107,7 +109,7 @@ Navigation Bar Section
                     </div>
                     <div class="control-group">
                           <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                          
+
                            @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -125,8 +127,8 @@ Navigation Bar Section
         </div>
       </div>
     </div>
-<!-- 
-Body Section 
+<!--
+Body Section
 -->
     <div class="row">
 <div id="sidebar" class="span3">
@@ -145,11 +147,11 @@ Body Section
     </ul>
 </div>
 
-            
+
             <a class="shopBtn btn-block" href="">Customer Satisfaction<br><small>is our Top most Priority</small></a>
             <br>
             <br>
-            
+
             <ul class="nav nav-list promowrapper">
                  @foreach($ProductsSide as $Product1)
                     <li>
@@ -162,7 +164,7 @@ Body Section
                       </div>
                     </li>
                   @endforeach
-            
+
           </ul>
 
     </div>
@@ -208,7 +210,7 @@ Body Section
 
 
       <ul class="thumbnails">
-      
+
             @foreach($Products as $Product)
               <li class="span3">
                 <div class="thumbnail">
@@ -218,25 +220,25 @@ Body Section
                 <div class="caption cntr">
                   <p>{{ $Product->name }}</p>
                   <p><strong> ${{ $Product->price }}</strong></p>
-                  <h4><button class="shopBtn add_to_cart"   data-pid="{{ $Product1->id }}"  title="add to cart"> Add to cart </button></h4>
+                  <h4><button class="shopBtn add_to_cart"   data-pid="{{ $Product->id }}"  title="add to cart"> Add to cart </button></h4>
                   <br class="clr">
                 </div>
                 </div>
               </li>
            @endforeach
-      
+
     </ul>
   </div>
     </div>
 
 
 
- 
-
-       
 
 
-     
+
+
+
+
 
 
 
@@ -270,8 +272,8 @@ Body Section
  <div class="span6">
 <h5>The standard chunk of Lorem</h5>
 The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
- those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
- Malorum" by Cicero are also reproduced in their exact original form, 
+ those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+ Malorum" by Cicero are also reproduced in their exact original form,
 accompanied by English versions from the 1914 translation by H. Rackham.
  </div>
  </div>
@@ -280,7 +282,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
 
 <div class="copyright">
 <div class="container">
-   
+
     <span>Copyright &copy; 2020<br> Ecommerce</span>
 </div>
 </div>
@@ -307,7 +309,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
                                      $('#sub_category_list_'+id).css('display','none');
                                      $('#'+main_category_id).data('open','not');
                                 }
-                               
+
                          });
 
 
@@ -334,7 +336,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
                                                                                   title: 'Product Added to Cart'
                                                                               })
                                                                         }
-                                                     }); 
+                                                     });
                                               });
                          });
         </script>

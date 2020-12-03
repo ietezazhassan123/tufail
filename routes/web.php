@@ -21,7 +21,7 @@ Route::get('/', function () {
 			$Products = Product::inRandomOrder()->limit(9)->get();
 			$ProductsSide = Product::inRandomOrder()->limit(3)->get();
 		    return view('welcome',['Categories'=>$Categories , 'Products'=>$Products , 'ProductsSide'=>$ProductsSide]);
-});
+})->name('mainpage');
 
 Auth::routes();
 
@@ -85,3 +85,13 @@ Route::post('search_products_based_on_filter_for_login_user','SearchController@s
 
 Route::get('UpdateProfile','Profile@UpdateProfile')->name('UpdateProfile');
 Route::post('update_user_profile','Profile@update_user_profile')->name('update_user_profile');
+
+
+Route::get('Aboutus',function(){
+	  return view('app.aboutus');
+})->name('Aboutus');
+
+
+Route::get('Contactus',function(){
+	  return view('app.contactus');
+})->name('Contactus');

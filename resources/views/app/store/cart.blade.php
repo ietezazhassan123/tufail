@@ -39,14 +39,14 @@
 	<h1>
 	<span>
          Khushal Shopping Mall
-    </span> 
+    </span>
 	</h1>
 	</div>
 	<div class="span4">
-	
+
 	</div>
 	<div class="span4 alignR">
-	<p><br> <strong> Support (24/7) :  03151995019 </strong><br><br></p>
+	<p><br> <strong> Support (24/7) :  0344-9900965 </strong><br><br></p>
 	<a href="{{ route('View_Cart') }}"><span class="btn btn-mini"> <span class="icon-shopping-cart"></span></span></a>
 	</div>
 </div>
@@ -64,7 +64,7 @@
 			<span class="icon-bar"></span>
 		  </a>
 		  <div class="nav-collapse">
-			
+
 			<form action="#" class="navbar-search pull-left">
 			  <input type="text" placeholder="Search" class="search-query span10">
 			</form>
@@ -109,8 +109,8 @@
 		<li><a href="{{ route('CheckOut') }}">Check Out</a> <span class="divider">/</span></li>
     </ul>
 	<div class="well well-small">
-		
-	<hr class="soften"/>	
+
+	<hr class="soften"/>
 
 	<table class="table table-bordered table-condensed">
               <thead>
@@ -145,10 +145,10 @@
 		                    <?php  $total= $total+ ($Product['price']*$Product['qty']);?>
 		                @endforeach
               	@endif
-				
 
-               
-                 
+
+
+
 				 <tr>
                   <td colspan="6" class="alignR">Total products:	</td>
                   <td class="label label-primary" id="total_price">
@@ -158,9 +158,9 @@
 
 				</tbody>
             </table><br/>
-		
-		
-				
+
+
+
 	<button onclick="window.history.back();" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </button>
 	<a href="{{ route('CheckOut') }}" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
@@ -198,8 +198,8 @@
  <div class="span6">
 <h5>The standard chunk of Lorem</h5>
 The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
- those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
- Malorum" by Cicero are also reproduced in their exact original form, 
+ those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+ Malorum" by Cicero are also reproduced in their exact original form,
 accompanied by English versions from the 1914 translation by H. Rackham.
  </div>
  </div>
@@ -235,13 +235,13 @@ accompanied by English versions from the 1914 translation by H. Rackham.
 
                     	     if(p_qty == null)
                     	     {
-                    	     	 p_qty = 1; 
+                    	     	 p_qty = 1;
                     	     }
 
                              axios.get('../../../Add_to_cart/'+p_id+'/'+p_qty)
                              .then((response)=>{
                                     console.log(response);
-                             }); 
+                             });
                     });
 
 
@@ -289,7 +289,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
 		                                            $('#total_price').html(response.data.total);
 		                                      }
 							  	       })
-							    
+
 							  }
 						})
 		    	   });
@@ -301,7 +301,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
                    $('.product_qty').on('change ',function(){
                           let qty_value = $(this).val();
                           let product_id = $(this).data('pid');
-                          
+
 
                           axios.get('change_qty_from_cart/'+product_id+'/'+qty_value)
                           .then((response)=>{
@@ -327,7 +327,7 @@ accompanied by English versions from the 1914 translation by H. Rackham.
                                   }
                           });
 
-                          
+
                    });
     	   });
 
