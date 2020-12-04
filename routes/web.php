@@ -100,3 +100,5 @@ Route::get('Contactus',function(){
 
 Route::get('delete_order/{id}','UserOrderController@delete_order');
 Route::get('delete_received_orders','UserOrderController@delete_received_orders');
+
+Route::get('all_users','ViewUser@view_all_users')->name('view_all_users');

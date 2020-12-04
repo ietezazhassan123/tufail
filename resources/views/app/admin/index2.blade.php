@@ -38,7 +38,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="Khushal Shopping Mall" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="http://localhost/shopping/public/Images/logo.jpg" width="70px" height="70px" alt="Khushal Shopping Mall" style="margin-left: 80px;border-radius:100px;">
     </a>
 
     <!-- Sidebar -->
